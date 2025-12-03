@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Dashboard - FlowPilot</title>
+  <style>
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+    }
+    
+    .dashboard-header {
+        background: #ff6600;
+        padding: 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+    }
+    
+    .dashboard-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .dashboard-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .planos-container {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+        overflow-x: auto;
+        padding: 1rem;
+    }
+    
+    .plano-card {
+        min-width: 250px;
+        background: #ff6600;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+    }
+    
+    .btn-dashboard {
+        background: #333;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo" onclick="location.href='index.html'">
+    <img src="../img/logo.png" alt="FlowPilot" width="200">
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="quemsomos.html">QUEM SOMOS</a></li>
+      <li><a href="planos.html">PLANOS</a></li>
+      <li><a href="servicos.html">NOSSOS SERVIÇOS</a></li>
+      <li><a href="contato.html">CONTATOS</a></li>
+      <li><button class="logout-btn" id="logoutBtn">Sair</button></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="dashboard-container" id="dashboardContent">
+    <!-- O conteúdo será carregado via JavaScript -->
+  </div>
+</main>
+
+<footer>
+  <div class="logo" onclick="location.href='index.html'">
+    <img src="../img/logo.png" alt="FlowPilot" width="200">
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="quemsomos.html">QUEM SOMOS</a></li>
+      <li><a href="planos.html">PLANOS</a></li>
+      <li><a href="servicos.html">NOSSOS SERVIÇOS</a></li>
+      <li><a href="contato.html">CONTATOS</a></li>
+    </ul>
+  </nav>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const usuarioLogado = JSON.parse(localStorage.getItem('flowpilotUsuarioLogado'));
+    const dashboardContent = document.getElementById('dashboardContent');
+    
+    if (!usuarioLogado) {
+        // Redirecionar para página de contato/login se não estiver logado
+        window.location.href = 'contato.html';
+        return;
+    }
+    
+    // Carregar informações do usuário
+    const usuarios = JSON.parse(localStorage.getItem('flowpilotUsuarios')) || [];
+    const usuarioInfo = usuarios.find(u => u.id === usuarioLogado.id);
+    
+    // Construir dashboard
+    dashboardContent.innerHTML = `
+        <div class="dashboard-header">
+            <h1>Bem-vindo(a), ${usuarioLogado.nome}!</h1>
+            <p>Email: ${usuarioLogado.email}</p>
+            <p>Empresa: ${usuarioInfo?.empresa || 'Não informada'}</p>
+            <p>Membro desde: ${new Date(usuarioInfo?.dataCadastro).toLocaleDateString('pt-BR')}</p>
+        </div>
+        
+        <div class="dashboard-cards">
+            <div class="dashboard-card">
+                <h3>Meu Plano Atual</h3>
+                <p>Plano Start</p>
+                <p>R$ 24,99/mês</p>
+                <button class="btn-dashboard" onclick="location.href='planos.html'">Mudar Plano</button>
+            </div>
+            
+            <div class="dashboard-card">
+                <h3>Fluxos de Trabalho</h3>
+                <p>Ativos: 3/10</p>
+                <p>Criar novo fluxo</p>
+                <button class="btn-dashboard">Gerenciar</button>
+            </div>
+            
+            <div class="dashboard-card">
+                <h3>Relatórios</h3>
+                <p>Último relatório: 15/03/2024</p>
+                <p>Desempenho: 85%</p>
+                <button class="btn-dashboard">Ver Relatórios</button>
+            </div>
+        </div>
+        
+        <h2>Meus Planos Disponíveis</h2>
+        <div class="planos-container">
+            <div class="plano-card">
+                <h3>Plano Start</h3>
+                <h2>R$ 24,99</h2>
+                <p>Ideal para pequenas equipes</p>
+                <button class="btn-dashboard">Selecionar</button>
+            </div>
+            
+            <div class="plano-card">
+                <h3>Plano Flow</h3>
+                <h2>R$ 49,99</h2>
+                <p>Para empresas em crescimento</p>
+                <button class="btn-dashboard">Selecionar</button>
+            </div>
+            
+            <div class="plano-card">
+                <h3>Plano Pilot Pro</h3>
+                <h2>R$ 99,99</h2>
+                <p>Solução completa</p>
+                <button class="btn-dashboard">Selecionar</button>
+            </div>
+        </div>
+    `;
+    
+    // Botão de logout
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        localStorage.removeItem('flowpilotUsuarioLogado');
+        window.location.href = 'index.html';
+    });
+});
+</script>
+
+</body>
+</html>

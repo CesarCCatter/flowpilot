@@ -1,0 +1,550 @@
+/* -------------------- RESET -------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #d7d7d7;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.titulo-centro {
+  text-align: center;
+  margin-top: .5rem;
+  margin: auto;
+}
+
+/* -------- IMAGENS OCULTAS NO MOBILE (MOBILE FIRST) -------- */
+img {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Mantém SOMENTE a logo visível no mobile */
+header .logo img,
+.logo img {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* -------------------- HEADER -------------------- */
+header {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  background: #ff6600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+/* -------------------- HERO SECTION -------------------- */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1 1 300px;
+}
+
+.hero-text h1 {
+  font-size: 2.4rem;
+  line-height: 3rem;
+}
+
+.hero-sub {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.hero-img img {
+  max-width: 320px;
+  width: 100%;
+}
+
+/* -------------------- FEATURES -------------------- */
+.faixa {
+  padding: 1rem;
+  background: #ff6600;
+}
+
+.features {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.feature-box {
+  flex: 1 1 300px;
+  font-size: 1.1rem;
+  line-height: 1.7rem;
+}
+
+.feature-img img {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* -------------------- GAME SECTION -------------------- */
+.game-section {
+  text-align: center;
+  padding: 2rem;
+}
+
+/* -------------------- BOTÃO PADRÃO -------------------- */
+.btn {
+  background: #ff6600;
+  padding: .8rem 2rem;
+  border-radius: 10px;
+  border: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  width: max-content;
+  box-shadow: 4px 4px 6px rgba(0,0,0,0.3);
+  transition: .3s;
+}
+
+.btn:hover {
+  background: #e55a00;
+  box-shadow: none;
+}
+
+/* -------------------- QUEM SOMOS -------------------- */
+#quemsomos {
+  max-width: 900px;
+  margin: auto;
+  margin-top: 8rem;
+  padding: 5rem;
+
+  position: relative;
+  background: #e55a00;
+  border-radius: 10px;
+}
+
+#quemsomos p{
+  font-size: 2rem;
+}
+
+/* -------------------- PLANOS -------------------- */
+.planos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.plano {
+  width: 230px;
+  max-height: 360px;  /* 🔥 altura fixa — impede empurrões */
+  background: #ff6600;
+  padding: 2rem 0rem;
+  border-radius: 20px;
+  box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
+  text-align: center;
+  cursor: pointer;
+  transition: .2s;
+  overflow: hidden; /* 🔥 impede crescer para fora */
+  position: relative;
+}
+
+.plano:hover {
+  transform: translateY(-8px);
+}
+
+.plano-desc {
+  max-height: 0;
+  display: none;
+  transition: max-height .3s ease;
+  background: #ff6600;
+  padding: 0 1rem;
+  margin-top: 1rem;
+}
+
+.plano:hover .plano-desc {
+  max-height: 150px; /* 🔥 só abre dentro do espaço reservado */
+  padding: 1rem;
+  overflow: visible;
+  display: block;
+}
+
+
+/* -------------------- SERVIÇOS -------------------- */
+.servicos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: auto;
+  margin-top: 4rem;
+}
+
+.card {
+  background: #ff6600;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 6px 6px 0px #b1b1b1;
+}
+
+.card h2 {
+  margin-bottom: .5rem;
+  color: white;
+}
+
+/* -------------------- FORMULÁRIO -------------------- */
+.contatos-area {
+  width: 90%;
+  margin: 3rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+}
+
+form {
+  flex: 1 1 300px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#titulo-form {
+  font-size: 2rem;
+}
+
+.campo {
+  width: 100%;
+  text-align: left;
+}
+
+.campo label {
+  font-weight: 600;
+  margin-bottom: .3rem;
+  display: block;
+}
+
+.campo input{
+  width: 100%;
+  height: 35px;
+  border: none;
+  background: #ff6600;
+  padding-left: .5rem;
+  font-size: 1rem;
+  color: black;
+  box-shadow: 4px 4px 0px #b1b1b1;
+}
+
+.campo input:focus {
+  outline: 3px solid black;
+}
+
+.campo-cadastro {
+  width: 100%;
+  text-align: left;
+}
+
+.campo-cadastro label {
+  font-weight: 600;
+  margin-bottom: .3rem;
+  display: block;
+}
+
+.campo-cadastro input {
+  width: 100%;
+  height: 35px;
+  border: none;
+  background: #ff6600;
+  padding-left: .5rem;
+  font-size: 1rem;
+  color: black;
+  box-shadow: 4px 4px 0px #b1b1b1;
+}
+
+.campo-cadastro input:focus {
+  outline: 3px solid black;
+}
+
+.alternar-btn {
+  background: transparent;
+  border: none;
+  color: #ff6600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* -------------------- CONTATOS INFO -------------------- */
+.contatos-info {
+  flex: 1 1 200px;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* -------------------- MENSAGENS DE STATUS -------------------- */
+.mensagem {
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.mensagem-sucesso {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.mensagem-erro {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.mensagem-info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+/* -------------------- ANIMAÇÕES -------------------- */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.05);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* -------------------- BOTÃO DE LOGOUT -------------------- */
+.logout-btn {
+  background: #ff3300;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-left: 20px;
+}
+
+.logout-btn:hover {
+  background: #cc2900;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* -------------------- INDICADOR DE USUÁRIO LOGADO -------------------- */
+.usuario-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+  color: white;
+  background: #28a745;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* -------------------- FEEDBACK VISUAL PARA FORMULÁRIO -------------------- */
+.campo input:valid:not(:placeholder-shown) {
+  border-left: 4px solid #28a745;
+}
+
+.campo input:invalid:not(:placeholder-shown) {
+  border-left: 4px solid #dc3545;
+}
+
+.campo-cadastro input:valid:not(:placeholder-shown) {
+  border-left: 4px solid #28a745;
+}
+
+.campo-cadastro input:invalid:not(:placeholder-shown) {
+  border-left: 4px solid #dc3545;
+}
+
+/* -------------------- BOTÕES COM ANIMAÇÃO -------------------- */
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-submit:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn-submit:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+      transform: scale(0, 0);
+      opacity: 0.5;
+  }
+  100% {
+      transform: scale(20, 20);
+      opacity: 0;
+  }
+}
+
+/* -------------------- LOADING SPINNER -------------------- */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* -------------------- RESPONSIVIDADE -------------------- */
+@media (max-width: 768px) {
+  .logout-btn {
+      margin: 10px 0;
+      width: 100%;
+      text-align: center;
+  }
+  
+  .usuario-info {
+      margin: 10px 0;
+      width: 100%;
+      justify-content: center;
+  }
+  
+  .mensagem {
+      font-size: 0.9rem;
+      padding: 10px;
+  }
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+  background: #ff6600;
+  padding: 1rem;
+  text-align: center;
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: .5rem;
+}
+
+footer a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* -------------------- RESPONSIVIDADE (DESKTOP) -------------------- */
+@media (min-width: 768px) {
+
+  /* Imagens voltam a aparecer no desktop */
+  img {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .hero {
+    flex-wrap: nowrap;
+  }
+
+  .servicos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+
+  #quemsomos {
+    font-size: 1.8rem;
+  }
+
+  #celular {
+    width: 350px;
+  }
+}
